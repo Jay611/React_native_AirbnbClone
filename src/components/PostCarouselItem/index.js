@@ -19,7 +19,7 @@ const PostCarouselItem = props => {
       style={[styles.container, {width: width - 60}]}
       onPress={gotToPostPage}>
       <View style={styles.innerContainer}>
-        <Image style={styles.image} source={post.image} />
+        <Image style={styles.image} source={{uri: post.image}} />
         <View style={styles.details}>
           <Text style={styles.bedrooms}>
             {post.bed} bed {post.bedroom} bedroom

@@ -13,7 +13,9 @@ const HomeScreen = props => {
   return (
     <View>
       <ImageBackground
-        source={require('../../../assets/images/wallpaper.jpg')}
+        source={{
+          uri: 'https://airbnbclone-jay611.s3.amazonaws.com/assets/images/wallpaper.jpg',
+        }}
         style={styles.image}>
         <Text style={styles.title}>Go Near</Text>
 

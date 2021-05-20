@@ -4,6 +4,8 @@ import {Text, Image, Pressable} from 'react-native';
 
 import styles from './styles';
 
+const days = 7;
+
 const Post = props => {
   const post = props.post;
 
@@ -15,7 +17,7 @@ const Post = props => {
 
   return (
     <Pressable style={styles.container} onPress={goToPostPage}>
-      <Image style={styles.image} source={post.image} />
+      <Image style={styles.image} source={{uri: post.image}} />
       <Text style={styles.bedrooms}>
         {post.bed} bed {post.bedroom} bedroom
       </Text>
@@ -26,7 +28,7 @@ const Post = props => {
         <Text style={styles.oldPrice}>${post.oldPrice}</Text>
         <Text style={styles.newPrice}> ${post.newPrice} </Text>/ night
       </Text>
-      <Text style={styles.totalPrice}>${post.totalPrice} total</Text>
+      <Text style={styles.totalPrice}>${post.newPrice * days} total</Text>
     </Pressable>
   );
 };

@@ -1,0 +1,96 @@
+mutation createAccomodation1{
+	createPost(input:{
+		image:"https://airbnbclone-jay611.s3.amazonaws.com/assets/images/0.jpg",
+		type:"Private Room",
+		title:"Bright room in the heart of the city",
+		description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+		
+		bed:1,
+		bedroom:1,
+		maxGuests:2,
+		
+		oldPrice:50,
+		newPrice:40,
+		
+		latitude: 28.080798046161917,
+		longitude: -16.59407023667273,
+	}) {
+		id
+	},
+}
+
+mutation createAccomodation2{
+	createPost(input:{
+		image:"https://airbnbclone-jay611.s3.amazonaws.com/assets/images/1.jpg",
+		type:"Entire Flat",
+		title:"New lux. apartment in the heart of Santa Cruz",
+		description: "Dignissimos inventore pariatur ipsum, harum quos rem iure laboriosam ratione ab! Facere temporibus doloremque veniam voluptas est perspiciatis illo delectus! Officia, tempore.",
+		
+		bed:3,
+		bedroom:2,
+		maxGuests:6,
+		
+		oldPrice:76,
+		newPrice:65,
+		
+		latitude: 28.4815637,
+		longitude: -16.2291304,
+	}) {
+		id
+	},
+}
+
+mutation createAccomodation3{
+	createPost(input:{
+		image:"https://airbnbclone-jay611.s3.amazonaws.com/assets/images/2.jpg",
+		type:"Private Property",
+		title:"Green House Santa Cruz",
+		description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit amet assumenda fuga, laboriosam adipisci repellendus voluptatem soluta odio facilis laudantium dignissimos, eaque possimus perferendis vero officiis sed, ea temporibus labore.",
+		
+		bed:2,
+		bedroom:1,
+		maxGuests:4,
+		
+		oldPrice:64,
+		newPrice:55,
+		
+		latitude: 28.2515617,
+		longitude: -16.3991304,
+	}) {
+		id
+	},
+}
+
+query showAllProperties{
+	listPosts{
+		items{
+			id
+			title
+			description
+		}
+	}
+}
+	
+
+
+query showPropertiesBaseOnLocation{
+  listPosts(filter:{
+  and:{
+  latitude:{
+  between:[27.9964, 28.7179]
+  }
+  longitude:{
+    between:[-16.9456, -16.1340]
+  }
+  }
+  }) {
+    items{
+      id
+      title
+      latitude
+      longitude
+    }
+  }
+  
+}
+
