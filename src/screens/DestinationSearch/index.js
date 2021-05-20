@@ -6,7 +6,6 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import styles from './styles';
 import SuggestionRow from './SuggestionRow';
 
-
 const DestinationSearchScreen = () => {
   const navigation = useNavigation();
 
