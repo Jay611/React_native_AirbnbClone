@@ -64,6 +64,8 @@ const GuestsScreen = () => {
               </Pressable>
             </View>
           </View>
+
+          {/* infants */}
           <View style={styles.row}>
             <View>
               <Text style={styles.type}>Infants</Text>
@@ -95,6 +97,9 @@ const GuestsScreen = () => {
             screen: 'Explore',
             params: {
               screen: 'SearchResults',
+              params: {
+                guests: adults + children,
+              },
             },
           })
         }>

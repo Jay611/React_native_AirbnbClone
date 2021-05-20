@@ -1,5 +1,6 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {useRoute} from '@react-navigation/native';
 
 import SearchResultsScreen from '../screens/SearchResults';
 import SearchResultsMap from '../screens/SearchResultsMap';
@@ -7,6 +8,9 @@ import SearchResultsMap from '../screens/SearchResultsMap';
 const Tab = createMaterialTopTabNavigator();
 
 const SearchResultsTabNavigator = () => {
+  const route = useRoute();
+  const {guests} = route.params;
+
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -16,8 +20,12 @@ const SearchResultsTabNavigator = () => {
         },
       }}
       swipeEnabled={false}>
-      <Tab.Screen name={'List'} component={SearchResultsScreen} />
-      <Tab.Screen name={'Map'} component={SearchResultsMap} />
+      <Tab.Screen name={'List'}>
+        {() => <SearchResultsScreen guests={guests} />}
+      </Tab.Screen>
+      <Tab.Screen name={'Map'}>
+        {() => <SearchResultsMap guests={guests} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 };

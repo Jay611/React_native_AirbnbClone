@@ -5,15 +5,23 @@ import {API, graphqlOperation} from 'aws-amplify';
 import Post from '../../components/Post';
 import {listPosts} from '../../graphql/queries';
 
-const SearchResultsScreen = () => {
+const SearchResultsScreen = props => {
   const [posts, setPosts] = useState([]);
+
+  const {guests} = props;
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsResult = await API.graphql(graphqlOperation(listPosts));
-        console.log(postsResult.data.listPosts.items);
-        console.log(postsResult.data.listPosts.items[0].image);
+        const postsResult = await API.graphql(
+          graphqlOperation(listPosts, {
+            filter: {
+              maxGuests: {
+                ge: guests,
+              },
+            },
+          }),
+        );
         setPosts(postsResult.data.listPosts.items);
       } catch (e) {
         console.log(e);
