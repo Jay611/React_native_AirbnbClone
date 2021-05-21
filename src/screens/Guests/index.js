@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {View, Text, Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import styles from './styles';
 
 const GuestsScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
 
   const [adults, setAdults] = useState(0);
   const [children, setChildren] = useState(0);
@@ -15,8 +16,8 @@ const GuestsScreen = () => {
     <View style={styles.container}>
       <View>
         <View style={styles.infoContainer}>
-          <Text style={styles.location}>Tenerife, Spain</Text>
-          <Text style={styles.date}>11-14 Dec</Text>
+          <Text style={styles.location}>{route.params.formatted_address}</Text>
+          <Text style={styles.date}>{new Date().toDateString()}</Text>
         </View>
         <View>
           {/* adults */}
@@ -99,6 +100,7 @@ const GuestsScreen = () => {
               screen: 'SearchResults',
               params: {
                 guests: adults + children,
+                viewport: route.params.viewport,
               },
             },
           })

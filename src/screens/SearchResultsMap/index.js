@@ -6,38 +6,14 @@ import MapView from 'react-native-maps';
 import CustomMarker from '../../components/CustomMarker';
 import PostCarouselItem from '../../components/PostCarouselItem';
 
-import {API, graphqlOperation} from 'aws-amplify';
-import {listPosts} from '../../graphql/queries';
-
 const SearchResultsMap = props => {
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
-  const [posts, setPosts] = useState([]);
 
-  const {guests} = props;
+  const {posts} = props;
 
   const width = useWindowDimensions().width;
   const flatlist = useRef();
   const map = useRef();
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postsResult = await API.graphql(
-          graphqlOperation(listPosts, {
-            filter: {
-              maxGuests: {
-                ge: guests,
-              },
-            },
-          }),
-        );
-        setPosts(postsResult.data.listPosts.items);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchPosts();
-  }, []);
 
   const viewConfig = useRef({itemVisiblePercentThreshold: 70});
   const onViewChanged = useRef(({viewableItems}) => {
