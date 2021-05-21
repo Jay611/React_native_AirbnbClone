@@ -71,16 +71,14 @@ query showAllProperties{
 	}
 }
 	
-
-
 query showPropertiesBaseOnLocation{
   listPosts(filter:{
   and:{
   latitude:{
-  between:[27.9964, 28.7179]
+  between:[28.42802483643464, 28.48761596901275]
   }
   longitude:{
-    between:[-16.9456, -16.1340]
+    between:[-16.33700451394219, -16.23566456017983]
   }
   }
   }) {
